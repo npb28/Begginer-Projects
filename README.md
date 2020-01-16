@@ -1,1 +1,1 @@
-# Begginer-Projects
+# Simple-Projects
