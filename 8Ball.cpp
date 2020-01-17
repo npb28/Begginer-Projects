@@ -1,6 +1,6 @@
 /*
   Remaining Task:
-      1. Fix getQuestion() funtion
+      1. Fix askQuestion() funtion
       2. Comment code
       3. Refactor
 */
