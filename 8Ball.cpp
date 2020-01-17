@@ -1,17 +1,11 @@
-/*
-  Remaining Task:
-      1. Fix askQuestion() funtion
-      2. Comment code
-      3. Refactor
-*/
+/* 
+  Remaining Task
+    -Add comments
+    -Refactor
+ */
 
-/*
-Simulate a magic 8-ball.
-Allow the user to enter their question.
-Display an in progress message(i.e. "thinking").
-Create 20 responses, and show a random response.
-Allow the user to ask another question or quit.
-*/
+//Simulate a magic 8-ball.
+
 
 #include <iomanip>
 #include <iostream>
@@ -35,7 +29,7 @@ class EightBall
 
 
   private:
-    string usersQ;
+    char usersQ[20];
     int randomNumber;
     int choice;
 };
@@ -65,12 +59,16 @@ EightBall::EightBall()
       }
     }
   } while(choice != 3);
+
+  system("clear");
 }
 
 void EightBall::askQuestion()
 {
+  system("clear");
   cout << "\nEnter a question to ask.\n" << endl;
-  cin >> usersQ;
+  cin.ignore(1000, '\n');
+  cin.getline(usersQ, 20);
   cout << " " << endl;
 }
 
@@ -83,28 +81,29 @@ void EightBall::responses(int num)
 {
   map<int, string> responses;
 
-  responses[1] = "Nigel";
-  responses[2] = "Pierre";
-  responses[3] = "Bonnain";
-  responses[4] = "Heather";
-  responses[5] = "Kris";
-  responses[6] = "Deshon";
-  responses[7] = "Marcus";
-  responses[8] = "Pooh";
-  responses[9] = "Linda";
-  responses[10] = "Lundynn";
-  responses[11] = "Messiah";
-  responses[12] = "Jordan";
-  responses[13] = "Rico";
-  responses[14] = "David";
-  responses[15] = "Kevin";
-  responses[16] = "Nikki";
-  responses[17] = "Terrion";
-  responses[18] = "Herbert";
-  responses[19] = "Roberta";
-  responses[20] = "Stephanie";
+  responses[1] = "It is certain.";
+  responses[2] = "It is decidedly so.";
+  responses[3] = "Without a doubt.";
+  responses[4] = "Yes - definitely.";
+  responses[5] = "You may rely on it.";
+  responses[6] = "As I see it, yes.";
+  responses[7] = "Most likely.";
+  responses[8] = "Outlook good.";
+  responses[9] = "Yes.";
+  responses[10] = "Signs point to yes.";
+  responses[11] = "Reply hazy, try again.";
+  responses[12] = "Ask again later.";
+  responses[13] = "Better not tell you now.";
+  responses[14] = "Cannot predict now.";
+  responses[15] = "Concentrate and ask again.";
+  responses[16] = "Don't count on it.";
+  responses[17] = "My reply is no.";
+  responses[18] = "My sources say no.";
+  responses[19] = "Outlook not so good.";
+  responses[20] = "Very doubtful.";
 
   cout << responses.at(num) << endl;
+  cout << " " << endl;
 }
 
 void EightBall::randomNum()
@@ -133,7 +132,6 @@ void EightBall::case1Task()
   responses(randomNumber);
 
   cout << "\nPress the enter key to return to the menu.";
-  cin.get();
   cin.get();
 }
 
