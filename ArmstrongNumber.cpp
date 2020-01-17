@@ -1,3 +1,6 @@
+
+//Program allows the user to check whether a given number is armstrong number or not.
+
 #include <iomanip>
 #include <iostream>
 #include <stdio.h>
