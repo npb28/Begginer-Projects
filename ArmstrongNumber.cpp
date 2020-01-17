@@ -1,5 +1,3 @@
-//Still need to provide comments and refactor. 
-
 #include <iomanip>
 #include <iostream>
 #include <stdio.h>
@@ -9,44 +7,43 @@ using namespace std;
 
 class ArmstrongNumber {
   private:
-    int usersNumber;
-    bool validNumber;
-    int *numberArr;
-    int totalDigits;
-    int calculatedNumber;
+    int usersNumber; //holds user's number imputed
+    bool validNumber; //holds if numbered entered by user is valid
+    int *numberArr; //points to a dynamic array
+    int totalDigits; //holds total digits in number
+    int calculatedNumber; //holds post power calculated number
 
   public:
-    ArmstrongNumber();
-    void getUserInput();
-    void putNumsInArray(int);
-    void validateNumber(int);
-    void getTotalDigits(int);
-    void doCalculations();
-    void compare();
+    ArmstrongNumber(); //constructor
+    void getUserInput(); //ask user for a number
+    void putNumsInArray(int); //put each digit in a array
+    void validateNumber(int); //check user's input
+    void getTotalDigits(int); //count digits in user's number
+    void doCalculations(); //update digits in the array
+    void compare(); //compare calculated number and user's number
+    void deleteArray(); //delete dynamic array
 
 };
 
 int main()
 {
-  ArmstrongNumber number;
-
-
+  ArmstrongNumber number; //create class object
 
   return 0;
 }
 
-ArmstrongNumber::ArmstrongNumber()
+ArmstrongNumber::ArmstrongNumber() //default constructor
 {
   getUserInput();
   getTotalDigits(usersNumber);
-  numberArr = new int[totalDigits];
+  numberArr = new int[totalDigits]; //dynamically allocate an array
   putNumsInArray(usersNumber);
   doCalculations();
   compare();
 
 }
 
-void ArmstrongNumber::getUserInput()
+void ArmstrongNumber::getUserInput() //get user's number and validate it
 {
   validNumber = false;
 
@@ -60,7 +57,7 @@ void ArmstrongNumber::getUserInput()
   }while(validNumber == false);
 }
 
-void ArmstrongNumber::putNumsInArray(int num)
+void ArmstrongNumber::putNumsInArray(int num) //put each digit in array
 {
   int count = 0;
   int numberIntoArray = num;
@@ -74,7 +71,7 @@ void ArmstrongNumber::putNumsInArray(int num)
   }
 }
 
-void ArmstrongNumber::getTotalDigits(int num)
+void ArmstrongNumber::getTotalDigits(int num) //count digits in user's number
 {
   int count = 0;
 
@@ -84,10 +81,10 @@ void ArmstrongNumber::getTotalDigits(int num)
     count++;
   }
 
-  totalDigits = count;
+  totalDigits = count; //store number of digits
 }
 
-void ArmstrongNumber::validateNumber(int num)
+void ArmstrongNumber::validateNumber(int num) //validate user's input
 {
   if(num > 0)
   {
@@ -95,7 +92,7 @@ void ArmstrongNumber::validateNumber(int num)
   }
 }
 
-void ArmstrongNumber::doCalculations()
+void ArmstrongNumber::doCalculations()//calculate the power of each digit/update
 {
   int calculatedNum = 0;
 
@@ -111,14 +108,19 @@ void ArmstrongNumber::doCalculations()
   calculatedNumber = calculatedNum;
 }
 
-void ArmstrongNumber::compare()
+void ArmstrongNumber::compare() //compare new number with user's number
 {
   if(calculatedNumber == usersNumber)
   {
-    cout << usersNumber << " is a ArmstrongNumber." << endl;
+    cout << usersNumber << " is a Armstrong Number." << endl;
   }
   else
   {
-    cout << usersNumber << " is not a ArmstrongNumber." << endl;
+    cout << usersNumber << " is not a Armstrong Number." << endl;
   }
+}
+
+void ArmstrongNumber::deleteArray() //delete dynamic array
+{
+  delete [] numberArr;
 }
