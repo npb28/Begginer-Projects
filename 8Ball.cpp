@@ -1,4 +1,11 @@
 /*
+  Remaining Task:
+      1. Fix getQuestion() funtion
+      2. Comment code
+      3. Refactor
+*/
+
+/*
 Simulate a magic 8-ball.
 Allow the user to enter their question.
 Display an in progress message(i.e. "thinking").
@@ -20,14 +27,17 @@ class EightBall
     void askQuestion();
     void showThinking();
     void responses(int);
-    int randomNum();
+    void randomNum();
     void displayMenu();
-    int getChoice();
+    void getChoice();
+    void case1Task();
+    void case2Task();
 
 
   private:
     string usersQ;
     int randomNumber;
+    int choice;
 };
 
 int main()
@@ -39,31 +49,27 @@ int main()
 
 EightBall::EightBall()
 {
-  int choice;
-
   do
   {
+    randomNum();
     displayMenu();
-    choice = getChoice();
+    getChoice();
 
-    if(choice != 2)
+    if(choice != 3)
     {
-      askQuestion();
-      showThinking();
-      randomNum();
-
       switch(choice)
       {
-        case 1:
-          responses(randomNumber);
+        case 1: case1Task();
+                break;
+        case 2: case2Task();
       }
     }
-  }while(choice != 2);
+  } while(choice != 3);
 }
 
 void EightBall::askQuestion()
 {
-  cout << "Enter a question to ask.\n" << endl;
+  cout << "\nEnter a question to ask.\n" << endl;
   cin >> usersQ;
   cout << " " << endl;
 }
@@ -99,32 +105,43 @@ void EightBall::responses(int num)
   responses[20] = "Stephanie";
 
   cout << responses.at(num) << endl;
+}
+
+void EightBall::randomNum()
+{
+  srand(time(NULL));
+  randomNumber = rand() % 20 + 1;
+}
+
+void EightBall::displayMenu()
+{
+  system("clear");
+  cout << "\nWelcome to the magic 8 Ball.\n" << endl;
+  cout << "1. Ask question." << endl;
+  cout << "2. Check previous question." << endl;
+  cout << "3. Exit program.\n" << endl;
+}
+
+void EightBall::getChoice()
+{
+  cin >> choice;
+}
+void EightBall::case1Task()
+{
+  askQuestion();
+  showThinking();
+  responses(randomNumber);
 
   cout << "\nPress the enter key to return to the menu.";
   cin.get();
   cin.get();
 }
 
-int EightBall::randomNum()
+void EightBall::case2Task()
 {
-  srand(time(NULL));
-  randomNumber = rand() % 20 + 1;
+  cout << "\nYour previous question was: " << usersQ << endl;
 
-  return randomNumber;
-}
-
-void EightBall::displayMenu()
-{
-  system("cls");
-  cout << "Welcome to the magic 8 Ball. \n" << endl;
-  cout << "1. Ask question." << endl;
-  cout << "2. Exit program.\n" << endl;
-}
-
-int EightBall::getChoice()
-{
-  int choice;
-  cin >> choice;
-
-  return choice;
+  cout << "\nPress the enter key to return to the menu.";
+  cin.get();
+  cin.get();
 }
