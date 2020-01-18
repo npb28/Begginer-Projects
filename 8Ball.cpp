@@ -1,11 +1,6 @@
-/* 
-  Remaining Task
-    -Add comments
-    -Refactor
- */
-
-//Simulate a magic 8-ball.
-
+/*
+  This program simulates a magic 8-ball.
+*/
 
 #include <iomanip>
 #include <iostream>
@@ -17,26 +12,26 @@ using namespace std;
 class EightBall
 {
   public:
-    EightBall();
-    void askQuestion();
-    void showThinking();
-    void responses(int);
-    void randomNum();
-    void displayMenu();
-    void getChoice();
-    void case1Task();
-    void case2Task();
+    EightBall(); //Constructor
+    void askQuestion(); //Funtion ask user for their question
+    void showThinking(); //Function displays thinking
+    void responses(int); //Funtion takes random num & displays 8ball's response
+    void randomNum(); //Function generates a random number
+    void displayMenu(); //Function displays menu with options for user
+    void getChoice(); //Function ask user for menu choice
+    void case1Task(); //Function calls functions to complete menu task
+    void case2Task(); //Function calls functions to complete menu task
 
 
   private:
-    char usersQ[20];
-    int randomNumber;
-    int choice;
+    char usersQ[100]; //stores user's question
+    int randomNumber; //stores random number
+    int choice; //stores users menu choice
 };
 
 int main()
 {
-  EightBall startGame;
+  EightBall startGame; //creates Eightball object to begin game
 
   return 0;
 }
@@ -45,41 +40,41 @@ EightBall::EightBall()
 {
   do
   {
-    randomNum();
-    displayMenu();
-    getChoice();
+    randomNum(); //creates random number
+    displayMenu(); //displays menu
+    getChoice(); //gets user's menu choice
 
     if(choice != 3)
     {
-      switch(choice)
+      switch(choice) //determines which case to perform depending on user
       {
         case 1: case1Task();
                 break;
         case 2: case2Task();
       }
     }
-  } while(choice != 3);
+  } while(choice != 3); //ends menu loop if user selects option 3
 
-  system("clear");
+  system("clear"); //clear terminal
 }
 
-void EightBall::askQuestion()
+void EightBall::askQuestion() //gets user's question
 {
-  system("clear");
+  system("clear"); //clear terminal
   cout << "\nEnter a question to ask.\n" << endl;
-  cin.ignore(1000, '\n');
-  cin.getline(usersQ, 20);
+  cin.ignore(1000, '\n'); //clears buffer
+  cin.getline(usersQ, 100); //gets users question, including spaces
   cout << " " << endl;
 }
 
-void EightBall::showThinking()
+void EightBall::showThinking() //displays thinking to screen
 {
   cout << "Thinking...\n" << endl;
 }
 
-void EightBall::responses(int num)
+void EightBall::responses(int num) //displays response to user
 {
-  map<int, string> responses;
+  map<int, string> responses; //a map holding 20 responses
 
   responses[1] = "It is certain.";
   responses[2] = "It is decidedly so.";
@@ -106,13 +101,13 @@ void EightBall::responses(int num)
   cout << " " << endl;
 }
 
-void EightBall::randomNum()
+void EightBall::randomNum() //generates random number.
 {
   srand(time(NULL));
   randomNumber = rand() % 20 + 1;
 }
 
-void EightBall::displayMenu()
+void EightBall::displayMenu() //displays menu
 {
   system("clear");
   cout << "\nWelcome to the magic 8 Ball.\n" << endl;
@@ -121,11 +116,11 @@ void EightBall::displayMenu()
   cout << "3. Exit program.\n" << endl;
 }
 
-void EightBall::getChoice()
+void EightBall::getChoice() //gets user's menu choice
 {
   cin >> choice;
 }
-void EightBall::case1Task()
+void EightBall::case1Task() //calls functions to satisfy menu option 1
 {
   askQuestion();
   showThinking();
@@ -135,7 +130,7 @@ void EightBall::case1Task()
   cin.get();
 }
 
-void EightBall::case2Task()
+void EightBall::case2Task() //calls functions to satisfy menu option 2
 {
   cout << "\nYour previous question was: " << usersQ << endl;
 
