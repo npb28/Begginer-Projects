@@ -18,7 +18,7 @@ class Coins
     Coins(); //constructor
     void getWeight(); //ask user for weight of each coin
     void wrappersNeeded(char); //calculate num of wrappers needed
-    void displayWrappers(char); //output to screen num of wrappers needed
+    void displayWrappers(); //output to screen num of wrappers needed
     void getAmount(); //calculate total amount of all coins
 
 
@@ -51,6 +51,7 @@ Coins::Coins() //default constructor
   wrappersNeeded('n'); //gets num of nickel wrappers needed
   wrappersNeeded('d'); //gets num of dime wrappers needed
   wrappersNeeded('q'); //gets num of quarter wrappers needed
+  displayWrappers();
   getAmount(); //get total dollar amount
 }
 
@@ -79,44 +80,31 @@ void Coins::wrappersNeeded(char type) //calculates needed wrappers
   {               // that info to user
     numPennies = pTotalWeight / PENNY;
     pWrappers = numPennies / pennyWrap;
-    displayWrappers(type);
   }
   else if(type == 'n')
   {
     numNickels = nTotalWeight / NICKEL;
     nWrappers = numNickels / nickelWrap;
-    displayWrappers(type);
   }
   else if(type == 'd')
   {
     numDimes = dTotalWeight / DIME;
     dWrappers = numDimes / dimeWrap;
-    displayWrappers(type);
   }
   else
   {
     numQuarter = qTotalWeight / QUARTER;
     qWrappers = numQuarter / quarterWrap;
-    displayWrappers(type);
   }
 }
 
-void Coins::displayWrappers(char type) //displays needed wrappers to user
+void Coins::displayWrappers() //displays needed wrappers to user
 {
-  switch (type)
-  {
-    case 'p':
-      cout << "You need " << pWrappers << " penny wrappers.\n" << endl;
-      break;
-    case 'n':
-      cout << "You need " << nWrappers << " nickel wrappers.\n" << endl;
-      break;
-    case 'd':
-      cout << "You need " << dWrappers << " dime wrappers.\n" << endl;
-      break;
-    case 'q':
-      cout << "You need " << qWrappers << " quarter wrappers.\n" << endl;
-  }
+  cout << "Penny wrappers needed: " << setw(4) << pWrappers << endl;
+  cout << "Nickel wrappers needed: " << setw(3) << nWrappers << endl;
+  cout << "Dime wrappers needed: " << setw(5) << dWrappers << endl;
+  cout << "Quarter wrappers needed: " << setw(2) << qWrappers << endl;
+  cout << " " << endl;
 }
 
 void Coins::getAmount() //calculates dollar amount
