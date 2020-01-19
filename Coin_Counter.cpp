@@ -111,10 +111,8 @@ void Coins::getAmount() //calculates dollar amount
 {
   double totalAmount = 0;
 
-  totalAmount += (pWrappers * 0.5);
-  totalAmount += (nWrappers * 2);
-  totalAmount += (dWrappers * 5);
-  totalAmount += (qWrappers * 10);
+  totalAmount += ((pWrappers * 0.5) + (nWrappers * 2) +
+                 (dWrappers * 5) + (qWrappers * 10));
 
   cout << fixed << showpoint << setprecision(2); //sets alignment for amount
   cout << "Your total is: $" << totalAmount << endl;
